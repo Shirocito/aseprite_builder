@@ -82,12 +82,10 @@ jobs:
           unzip Aseprite-source.zip -d aseprite
           mkdir -p aseprite/build
 
-      - name: Set architecture for binary
+      - name: Set up Visual Studio environment
         shell: cmd
-        run: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" -arch=x64
-
-      - name: Setting Visual Studio build environment
-        uses: seanmiddleditch/gha-setup-vsdevenv@v1
+        run: |
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
 
       - name: Run CMake
         working-directory: aseprite/build
