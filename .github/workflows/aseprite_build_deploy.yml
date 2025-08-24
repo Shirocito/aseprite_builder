@@ -60,7 +60,7 @@ jobs:
   build-aseprite:
     name: Build Aseprite (Windows)
     needs: check-version
-    if: ${{ needs.check-version.outputs.should_build }}
+    if: true
     runs-on: windows-latest
     steps:
       - name: Install dependencies
