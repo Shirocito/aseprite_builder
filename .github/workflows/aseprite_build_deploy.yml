@@ -60,19 +60,12 @@ jobs:
       - name: Install Ninja
         run: choco install ninja -y
 
-      - name: Get Skia from cache
-        id: skia-cache
-        uses: actions/cache@v3
-        with:
-          path: skia
-          key: skia-windows-cache
-          restore-keys: skia-windows-cache
-
-      - name: Download Skia if not in cache
-        if: steps.skia-cache.outputs.cache-hit != 'true'
+      - name: Clone Skia full repo
         run: |
-          curl -o Skia-Windows-Release-X64.zip -L https://github.com/aseprite/skia/releases/download/m81-b607b32047/Skia-Windows-Release-X64.zip
-          unzip Skia-Windows-Release-X64.zip -d skia
+          git clone https://github.com/aseprite/skia.git
+          cd skia
+          git checkout m81-b607b32047
+          git submodule update --init --recursive
 
       - name: Download Aseprite source
         run: |
