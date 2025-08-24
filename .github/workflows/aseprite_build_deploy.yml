@@ -62,9 +62,6 @@ jobs:
       - name: Install Ninja
         run: choco install ninja -y
 
-      - name: Install dependencies
-        run: choco install p7zip -y
-
       - name: Get Skia from cache
         id: skia-cache
         uses: actions/cache@v3
@@ -112,7 +109,7 @@ jobs:
 
       - name: Create release zip
         working-directory: aseprite/build/bin
-        run: 7z -tzip a Aseprite-${{ needs.check-version.outputs.latest_tag }}-Windows.zip *
+        run: '"C:\Program Files\7-Zip\7z.exe" a Aseprite-${{ needs.check-version.outputs.latest_tag }}-Windows.zip *'
 
       - name: Upload release
         uses: actions/upload-release-asset@v1
