@@ -1,4 +1,4 @@
-Commit de prueba para activar Actions
+# Commit de prueba para activar Actions
 
 # What is it
 Automated workflow for GitHub Actions which builds Aseprite for Windows, Linux, macOS.</br>
